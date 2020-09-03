@@ -14,15 +14,20 @@ public class JPaMain {
         entityTransaction.begin();
 
         try{
-            /* insert
-            Member member = new Member();
-            member.setId(1L);
-            member.setName("HelloA");
-            entityManager.persist(member);
-            */
-            Member member = entityManager.find(Member.class, 1L);
 
-            member.setName("TEST");
+            Member member = new Member();
+            member.setId(2L);
+            member.setName("JPA GO");
+
+
+            System.out.println("=== BEFORE ===");
+            entityManager.persist(member);
+            System.out.println("=== AFTER ===");
+
+            Member findMember = entityManager.find(Member.class, 2L);
+
+            System.out.println("findMember = " + findMember.getId());
+
 
             entityTransaction.commit();
         }catch (Exception e){
